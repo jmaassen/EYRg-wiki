@@ -16,11 +16,16 @@ You will need to do this __before__ adding support for wide area communication (
 
 First retrieve CESM from SVN at ucar: 
 
-     svn co --username <user> --password <password> https://svn-ccsm-release.cgd.ucar.edu/model_versions/cesm1_0_4 cesm_1_0_4 
+     svn co --username <user> --password <password> https://svn-ccsm-release.cgd.ucar.edu/model_versions/cesm1_0_4
 
 To get access to SVN you will need a username and password for which you need to register here:
 
 <http://www.cesm.ucar.edu/models/register/register_cesm.cgi>
+
+### Create the appropriate machine configuration for CESM.
+
+Assuming the CESM is installed in `$HOME/cesm1_0_4` you need to create a machine
+description in the directory `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines`.
 
 
 
