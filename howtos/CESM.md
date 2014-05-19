@@ -1,5 +1,5 @@
 Howto install CESM 1.04
------------------------
+=======================
 
 In our EYRg experiments we will use CESM version 1.04. Although this is not the latest version, we also use 
 it in other projects, and therefore we have configuration files and results available. 
@@ -12,7 +12,7 @@ description on installing CESM have a look at the official documentation:
 Note that this page describes how to perform a standard installation, __without__ support for wide area communication
 You will need to do this __before__ adding support for wide area communication (which can be found [here](http://)).
 
-# Retrieve CESM from SVN:
+### Retrieve CESM from SVN:
 
 First retrieve CESM from SVN at ucar: 
 
