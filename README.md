@@ -72,7 +72,7 @@ we can ensure that the inter model communication overhead remains acceptable.
 
 The proposal that describes our plans in detail can be found here:
 
-<http://TODO>
+<https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf>
 
 
 
