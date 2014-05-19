@@ -66,12 +66,10 @@ locations and run our simulations on combinations of supercomputers.
 By connecting these supercomputer with high bandwidth networks (_lightpaths_)
 we can ensure that the inter model communication overhead remains acceptable.
 
-Additiona information, HOWTOs, example, ...
+Additional information, HOWTOs, example, ...
 -------------------------------------------
 
-Additional information about our project:
-
-[Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf)
+[Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
 
 [Howto install CESM](http://todo)
 
