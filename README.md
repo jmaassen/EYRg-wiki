@@ -71,6 +71,8 @@ Additional information, HOWTOs, example, ...
 
 [Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
 
+[Suggested network topology](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Network\ topology\ Dijkstra\ project\ EYR\ Global_v1.pdf)
+
 [Howto install CESM](http://todo)
 
 [Howto install eSalsa-MPI](http://todo)
