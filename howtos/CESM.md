@@ -7,7 +7,7 @@ it in other projects, and therefore we have configuration files and results avai
 We will now give a very short description of how to install CESM on Cartesius or Stampede. For a more detailed 
 description on installing CESM have a look at the official documentation:
 
-<http://www.cesm.ucar.edu/models/cesm1.0/cesm/tags/index.html#CESM1_0_4>
+<http://www.cesm.ucar.edu/models/cesm1.0/cesm/tags/index.html#CESM1\_0\_4>
 
 Note that this page describes how to perform a standard installation, __without__ support for wide area communication.
 More information about installing CESM __with__ support for wide area communication can be found [here](http://)
