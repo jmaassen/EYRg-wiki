@@ -27,5 +27,28 @@ To get access to SVN you will need a username and password for which you need to
 Assuming the CESM is installed in `$HOME/cesm1_0_4` you need to create a machine
 description in the directory `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines`.
 
+In this directory you will find a collection of files looking something like this:
+
+- `Macros.abc` contains the compile macros for machine `abc`.
+- `env_machopts.abc` contains the environment for machine `abc`.
+- `mkbatch.abc` generates a submission script for machine `abc`.
+- `config_machines.xml` contains all machine configurations. 
+
+To use CESM you need to creates a Macros, env_machopts and mkbatch files for your 
+specirfic machine and environment. The easiest approach is to copy an existing 
+configuration of a machine similar to your own, and adapt that until it works. 
+
+Once the configuration is created, you must add a section to the `config_machines.xml`
+file so CESM can find your configuration.
+
+For Cartesisus and Stampede we have prepared the following files:
+
+TODO
+
+
+
+
+
+
 
 
