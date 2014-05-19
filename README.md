@@ -66,8 +66,8 @@ locations and run our simulations on combinations of supercomputers.
 By connecting these supercomputer with high bandwidth networks (_lightpaths_)
 we can ensure that the inter model communication overhead remains acceptable.
 
-More information, HOWTOs, resource, example, etc.
--------------------------------------------------
+Additiona information, HOWTOs, example, ...
+-------------------------------------------
 
 Additional information about our project:
 
