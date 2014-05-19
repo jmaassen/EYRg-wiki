@@ -1,4 +1,9 @@
 EYRg-wiki
 =========
 
-Wiki for the Enlighten Your Reseach global part of the eSalsa project
+This repository contains all information relating to the _Enlighten Your Reseach global_ (EYRg) 
+part of the eSalsa project.
+
+
+
+
