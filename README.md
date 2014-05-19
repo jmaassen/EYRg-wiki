@@ -71,15 +71,17 @@ Additional information, HOWTOs, example, ...
 
 [Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
 
-[Suggested network topology](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Network\ topology\ Dijkstra\ project\ EYR\ Global_v1.pdf)
+[Initial network topology](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Network\ topology\ Dijkstra\ project\ EYR\ Global_v1.pdf?raw=true)
 
-[Howto install CESM](http://todo)
+[Initial planning](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Planning.pdf)
 
-[Howto install eSalsa-MPI](http://todo)
+[Howto install CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)
 
-[Howto use CESM with eSalsa-MPI](http://todo)
+[Howto install eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/eSalsaMPI.md)
 
-[Results](http://todo)
+[Howto use CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)
+
+[Results](https://github.com/jmaassen/EYRg-wiki/blob/master/results/results.md)
 
 
 
