@@ -12,8 +12,7 @@ description on installing CESM have a look at the official documentation:
 Note that this page describes how to perform a standard installation, __without__ support for wide area communication
 You will need to do this __before__ adding support for wide area communication (which can be found [here](http://)).
 
-Retrieve CESM from SVN:
--
+- Retrieve CESM from SVN:
 
 First retrieve CESM from SVN at ucar: 
 
