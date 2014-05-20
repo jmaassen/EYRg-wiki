@@ -83,7 +83,7 @@ communication between submodels is limited (at least compared to the amount of c
 submodel). This allows us to distibuted the models over multiple locations. Taking coupling frequencies 
 and data dependencies into account, we can easily distribute the models as follows:
 
-![cesm-distribution](images/cesm-distributed.png "CESM distribution")
+![cesm-distribution](images/cesm-distribution.png "CESM distribution")
 
 Since the ocean model is relatively loosely coupled to the other models, it can be run on a separate 
 supercomputer, provided the communication channel between the supercomputers is fast enough for the 
