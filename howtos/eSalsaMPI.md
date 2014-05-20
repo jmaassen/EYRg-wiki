@@ -1,9 +1,7 @@
 HOWTO: installing eSalsa-MPI
 ============================
 
-
-
-We will now give a very short description of how to install CESM on Cartesius or Stampede. For a more detailed description on installing CESM have a look at the official documentation:
+We will now give a very short description of how to install eSalsa-MPI.
 
 ### Retrieve eSalsa-MPI from the NLeSC github
 
