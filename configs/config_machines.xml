@@ -24,30 +24,7 @@
          MPISERIAL_SUPPORT="FALSE"
          PES_PER_NODE="24" />
 
-
-<machine MACH="cartesius_gcc"
-         DESC="SurfSara Bull, os is GNU/Linux, 24 pes/node, batch system is SLURM - Single machine setup using GCC and BullX MPI" 
-         EXEROOT="/home/$CCSMUSER/CESM/experiments/$CASE/build"
-         OBJROOT="$EXEROOT"
-         LIBROOT="$EXEROOT/lib"
-         INCROOT="$EXEROOT/lib/include" 
-         DIN_LOC_ROOT_CSMDATA="/projects/esalsa/inputdata"
-         DIN_LOC_ROOT_CLMQIAN="/cgd/tss/atm_forcing.datm7.Qian.T62.c080727"
-         DOUT_S_ROOT="/home/$CCSMUSER/CESM/archive/$CASE"
-         DOUT_L_HTAR="FALSE"
-         DOUT_L_MSROOT="csm/$CASE"
-         CCSM_BASELINE="/fis/cgd/cseg/csm/ccsm_baselines"
-         CCSM_CPRNC="/fis/cgd/cseg/csm/tools/cprnc/cprnc"
-         ESMF_LIBDIR="/ptmp/svasquez/esmf_install/ESMF_5_2_0-O/lib/"
-         OS="Linux" 
-         BATCHQUERY="squeue"
-         BATCHSUBMIT="sbatch &lt;" 
-         GMAKE_J="24" 
-         MAX_TASKS_PER_NODE="24"
-         MPISERIAL_SUPPORT="FALSE"
-         PES_PER_NODE="24" />
-
-<machine MACH="cartesius_eyrg_gcc"
+<machine MACH="cartesius_gcc_eyrg"
          DESC="SurfSara Bull, os is GNU/Linux, 24 pes/node, batch system is SLURM - EYRG setup using GCC and BullX MPI" 
          EXEROOT="/home/$CCSMUSER/CESM/experiments/$CASE/build"
          OBJROOT="$EXEROOT"

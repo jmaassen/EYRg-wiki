@@ -18,7 +18,7 @@ you need to create a machine description in the directory:
 
 ### Create a Macros file
 
-First create a `Macros.abc_eSalsaMPI` file based on the `Macros.abc` file, where `abc` is the 
+First create a `Macros.abc_eyrg` file based on the `Macros.abc` file, where `abc` is the 
 name of your machine.
 
 In this file, set the MPI library to eSalsa-MPI:
@@ -56,25 +56,35 @@ and make sure that the compiler configuration is correctly passed to the MCT and
        CONFIG_ARGS += CC="$(CC)" F90="$(FC)" FC="$(FC)" MPICC="$(CC)" MPIF90="$(FC)" NETCDF_PATH="$(NETCDF_PATH)" MPI_INC="-I$(INC_MPI)" FFLAGS="$(FFLAGS)" CFLAGS="$(CFLAGS)"
      endif
 
+Here is the 
+[Macros.cartesius_gcc_eyrg](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/Macros.cartesius_gcc_eyrg) 
+file we use on Cartesius.
 
 ### Create a machine specific "env_machopts" file.
 
-Create a `env_machopts.abc_eSalsaMPI` file based on the `env_machopts.abc` file, where `abc` is the name of 
+Create a `env_machopts.abc_eyrg` file based on the `env_machopts.abc` file, where `abc` is the name of 
 your machine. In this file, set the MPI location to eSalsa-MPI:
 
      setenv MPICH_PATH $HOME/eSalsa-MPI
  
+Here is the 
+[env_machopts.cartesius_gcc_eyrg](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/env_machopts.cartesius_gcc_eyrg)
+file we use on Cartesius.
+
 ### Create a __DUMMY__ "mkbatch" file.
 
 Create a `mkbatch.abc_eSalsaMPI` file based on the `mkbatch.abc` file, where `abc` is the name of 
 your machine. In this file, set the correct machine name:
 
-     set mach = abc_eSalsaMPI
+     set mach = abc_eyrg
 
 __NOTE: This is a dummy mkbatch file!__ Since we will use the eSalsa-MPI version of CESM to run on a 
 combination of machines, it is a bit hard to generate the correct submission files. Therefore, for the time 
 being we assume that the user will create these files manually. 
 	
+Here is the 
+[mkbatch.cartesius_gcc_eyrg](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/mkbatch.cartesius_gcc_eyrg)
+file we use on Cartesius.
 
 
 
