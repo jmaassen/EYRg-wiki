@@ -119,7 +119,7 @@ This configuration used the following setup:
 
 - CESM is run on 1728 cores (72 nodes x 24 cores).
 - Atmosphere runs on 504 cores (21 nodes) shared with coupler (504), land (24) and sea ice (480).
-- Ocean runs concurrently on an additional 1225 cores (51 nodes)
+- Ocean runs concurrently on an additional 1224 cores (51 nodes)
 - 4 coupling per model day between ocean and others. 
 - The simulation runs for 31 model days. 
 
