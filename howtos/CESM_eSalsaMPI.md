@@ -11,12 +11,10 @@ eSalsa-MPI and run some test. If not, go thought these howtos first:
 
 ### Create an eSalsa-MPI machine configuration for CESM.
 
-Assuming the CESM is installed in `$HOME/cesm1_0_4` you need to create a machine
-description in the directory:
+Assuming the CESM is installed in `$HOME/cesm1_0_4` and eSalsa-MPI is installed in `$HOME/eSalsa-MPI`, 
+you need to create a machine description in the directory:
 
      $HOME/cesm1_0_4/scripts/ccsm_utils/Machines
-
-We also assume eSalsa-MPI is installed in `$HOME/eSalsa-MPI`.
 
 ### Create a Macros file
 
