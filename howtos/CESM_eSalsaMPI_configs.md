@@ -1,4 +1,4 @@
-HOWTO: Running CESM with eSalsa-MPI
+\HOWTO: Running CESM with eSalsa-MPI
 ===================================
 
 We will now give a description of how to run CESM using eSalsa-MPI. 
@@ -9,13 +9,17 @@ If not, go though this howto first:
 
 # Prepare the eSalsa-MPI configuration
 
-Once the experiment has compiled succesfully we need to create the necessary eSalsa-MPI configuration files
-to run it. We assume the 1728 core configuration descibed above is used, and that CESM will be split in two jobs:
+Once the experiment has compiled succesfully we need to create the necessary eSalsa-MPI configuration files 
+to run it. We assume the 1728 core configuration descibed 
+[here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md) is used, and that CESM 
+will be split in two jobs:
 
 - 504 cores running the atmosphere, land, sea ice and coupler
 - 1224 cores running the ocean.
 
-In addition, we will use 2 gateway nodes of 24 cores each.
+In addition, we will use 2 gateway nodes of 24 cores each. This give us the configuration shown below:
+
+![cesm-split](images/CESM-empi-24gw.png "CESM example split")
 
 ### Prepare the eSalsa-MPI server config
 
