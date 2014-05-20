@@ -62,7 +62,7 @@ This config file contains descriptions for both the Stampede and Cartesius machi
 
 - [config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml)
 
-
+More configurations will be added when they become available. 
 
 
 
