@@ -235,14 +235,10 @@ of the server and both CESM jobs:
      10.200.0.0/16
 
 The server is configured to listnen on port 6677. The machine that the server is running on should be 
-accessible to the gateway nodes of both jobs. The jobs are called "job-ATM" and "job-OCN" and are 
-configured to use 24 gateways (1 node) per job. 
-
-For "job-ATM" the gateways will use the network interface with address `10.200.0.0/16` and port range 
-`12000...12023`.
-
-For "job-OCN" the gateways will use the network interface with address `10.200.0.0/16` and port range 
-`14000...14023`.
+accessible to the gateway nodes of both jobs. The jobs are called "job-ATM" and "job-OCN" and are configured 
+to use 24 gateways (1 node) per job. For "job-ATM" the gateways will use the network interface with address 
+`10.200.0.0/16` and port range `12000...12023`. For "job-OCN" the gateways will use the network interface 
+with address `10.200.0.0/16` and port range `14000...14023`.
 
 Next, two configuration files are needed to configure each CESM job: 
 
