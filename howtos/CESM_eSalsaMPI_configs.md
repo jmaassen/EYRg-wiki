@@ -225,7 +225,7 @@ and
      sbatch submit-ocn-1248.slurm
 
 
-Once the jobs are started by the resource manager, the server will produce output like this:
+Once the jobs are started by the resource manager and have contacted the server, the server will produce output like this:
 
      620779 : Got connection from Socket[addr=/10.200.202.125,port=43114,localport=6677]
      620780 : Cluster job-ATM connected to gateway at Socket[addr=/10.200.202.125,port=43114,localport=6677]
