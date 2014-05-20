@@ -89,10 +89,12 @@ Since the ocean model is relatively loosely coupled to the other models, it can 
 supercomputer, provided the communication channel between the supercomputers is fast enough for the 
 data exchanges that are required each model day. The black numbers between the models are an estimate of 
 the amount of data that needs to be exchanged between models during a _single_ model coupling when using 
-0.1/0.5 degree resolutions. The red numbers are an estimate for the amount of data exchanged when using 
-the 0.02/0.5 degree resolution.
+0.5/0.1 degree resolutions. The red numbers are an estimate for the amount of data exchanged when using 
+the 0.5/0.02 degree resolution.
 
 
+How are we planning to do it? 
+-----------------------------
 
 
 
