@@ -27,8 +27,8 @@ For more information on the eSalsa project see:
 <http://www.esciencecenter.nl/projects/project-portfolio/climate-research>
 
 
-What is Enlighten Your Reseach global ?
----------------------------------------
+What is Enlighten Your Reseach ?
+--------------------------------
 
 EYRg is a competition organized by five National Research and Education Networks (NRENS), 
 ESnet, Funet, Internet2, Janet and SURFnet. The goal of EYRg is to promote the use of 
