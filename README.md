@@ -163,7 +163,7 @@ More information, HOWTOs, examples, ...
 
 - HOWTO: [Running CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_running.md)
 
-- Initial experimental [results](https://github.com/jmaassen/EYRg-wiki/blob/master/results/results.md)
+	
 
 
 
