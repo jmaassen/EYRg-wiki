@@ -149,19 +149,20 @@ More information about eSalsa-MPI can be found here:
 More information, HOWTOs, examples, ...
 -------------------------------------------
 
-[Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
+- Our EYRg proposal: [(pdf)](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
 
-[Initial network topology](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Network\ topology\ Dijkstra\ project\ EYR\ Global_v1.pdf?raw=true)
+- Initial network topology provided by SURFnet: [(pdf)](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Network\ topology\ Dijkstra\ project\ EYR\ Global_v1.pdf?raw=true)
 
-[Initial planning](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Planning.pdf)
+- Initial planning: [(pdf)](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Planning.pdf)
 
-[Howto install CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)
+- Short HOWTO: [Installing CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)
 
-[Howto install eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/eSalsaMPI.md)
+- Short HOWTO: [Installing eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/eSalsaMPI.md)
 
-[Howto use CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)
+- Short HOWTO: [Using eSalsa-MPI in CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)
 
-[Results](https://github.com/jmaassen/EYRg-wiki/blob/master/results/results.md)
+- Initial experimental [results](https://github.com/jmaassen/EYRg-wiki/blob/master/results/results.md)
+
 
 
 
