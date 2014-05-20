@@ -186,9 +186,9 @@ and
 
 ### Start the server and submit the jobs. 
 
-Once all confguration files have been created, you can start a job by performing these three steps:
+Once all confguration files have been created, you can start a job by performing these steps:
 
-- Start the server
+_Start the server:_
 
      $EMPI_HOME/scripts/empi-server.sh server.config
 
@@ -215,7 +215,8 @@ It should then print something like this:
      6 : 
      6 : Waiting for 2 clusters to connect...
 
-- Submit the jobs:
+
+_Submit the jobs:_
 
      sbatch submit-atm-528.slurm
 
