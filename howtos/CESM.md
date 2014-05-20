@@ -62,7 +62,92 @@ This config file contains descriptions for both the Stampede and Cartesius machi
 
 - [config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml)
 
-More configurations will be added when they become available. 
+Please download these files and copy them to:
+
+     $HOME/cesm1_0_4/scripts/ccsm_utils/Machines
+
+If necessary you can edit the `config_machines.xml` file to change the locations of the input and output 
+directries. For example, in the "cartesius_gcc" section, the following paths are set:
+
+     EXEROOT="/home/$CCSMUSER/CESM/experiments/$CASE/build"
+     DIN_LOC_ROOT_CSMDATA="/projects/esalsa/inputdata"
+     DOUT_S_ROOT="/home/$CCSMUSER/CESM/archive/$CASE"
+
+In this machine description, the experiment dirs will be created in `$HOME/CESM/experiments` 
+(see EXEROOT), the output archive is located in `$HOME/CESM/archive` (see DOUT_S_ROOT), and the input
+is located in `/projects/esalsa/inputdata` (see DIN_LOC_ROOT_CSMDATA). 
+
+The EXEROOT directory will be used to create temporary output files such as logs and checkpoint. 
+This may be a lot of data! Once a CESM run has completed succesfully, al these logs and data will
+be copied to the output archive specified in DOUT_S_ROOT.
+
+### Create the appropriate experiment directories
+
+As explained above, CESM uses certain experiment directories, so make sure they exist:
+
+     mkdir -p $HOME/CESM/experiments
+     mkdir -p $HOME/CESM/archive
+
+### Create an experiment
+
+To setup a CESM experiment you must use the "create_newcase" script:
+
+     cd $HOME/CESM/experiments
+     $HOME/cesm1_0_4/scripts/create_newcase -case test1 -mach cartesius_gcc -compset B -res f05_t12
+
+This creates a "test1" directory in `$HOME/CESM/experiments` that contains a CESM instance configuration 
+for a simulation using compset "B" (all active models) for resolution "f05_t12" (0.5 degree atmosphere
+and land and 0.1 degree ocean and sea ice) using the configuration for "cartesius_gcc".
+
+This configuration is only __PARTLY__ configured for running on Cartesius.
+
+To complete the configuration of the experiment do the following:
+   
+     cd $HOME/CESM/experiments/test1
+
+- Edit the "env_mach_pes.xml" to set the core configuration for this experiment. 
+- Edit the "env_conv.xml" file to set the correct run type and start date. or use 
+- Edit the "env_run.xml" file to set the desired experiment length.
+
+We have also prepared these test configurations for Cartesius:
+
+- [env_mach_pes.xml]()
+- [env_conv.xml]()
+- [env_run.xml]()
+
+These configurations are setup as follows:
+
+- CESM is run on 1728 cores (72 nodes) of Cartesius
+- Atmosphere shares 504 cores (21 nodes) with land (24 cores / 1 node), sea ice (480 cores / 20 nodes), and coupler, 504 cores (21 nodes).
+- Ocean runs concurrently on an additional 1225 cores (51 nodes)
+- 4 coupling per model day between ocean and others. 
+- Run for 31 model days. 
+
+
+### Build the experiment
+
+Next, build the experiment like this:
+
+     cd $HOME/CESM/experiments/test1
+     ./configure -case
+     ./test1.cartesius_gcc.build 
+
+The `configure -case` generates the necessary scripts and configuration files for this 
+particular experiment with this particular configuration. In general any changes to one of 
+the configuration files will require CESM to be recompiled.
+
+
+### Start CESM 
+
+After a succesfull build, start CESM using the generates script:
+
+     cd $HOME/CESM/experiments/test1
+     sbatch test.cartesius_gcc.run
+
+CESM will now run on in the `$HOME/CESM/experiments/test1/build` directory. All output and 
+logging files will be written there. After a successfull run, all output will be copied to 
+`$HOME/CESM/archive/test1/`.
+
 
 
 
