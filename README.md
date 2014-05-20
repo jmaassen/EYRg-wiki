@@ -155,11 +155,13 @@ More information, HOWTOs, examples, ...
 
 - Initial planning: [(pdf)](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/Planning.pdf)
 
-- Short HOWTO: [Installing CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)
+- HOWTO: [Installing CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)
 
-- Short HOWTO: [Installing eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/eSalsaMPI.md)
+- HOWTO: [Installing eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/eSalsaMPI.md)
 
-- Short HOWTO: [Using eSalsa-MPI in CESM](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)
+- HOWTO: [Building CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)
+
+- HOWTO: [Running CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_running.md)
 
 - Initial experimental [results](https://github.com/jmaassen/EYRg-wiki/blob/master/results/results.md)
 

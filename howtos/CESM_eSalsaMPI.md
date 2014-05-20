@@ -216,7 +216,7 @@ __IMPORTANT:__ use the same `env_mach_pes.xml`, `env_conv.xml` and `env_run.xml`
 otherwise CESM will refuse to RUN. 
 
 Next, you must prepare the necessary eSalsa-MPI configuration files and submit scripts. We will descibe this 
-in more detail [here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_configs.md).
+in more detail [here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_running.md).
 
 
  
