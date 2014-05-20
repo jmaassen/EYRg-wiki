@@ -76,9 +76,9 @@ port of the server.
 
 The configuration files are available here:
 
-- [server.config]()
-- [job-atm.config]()
-- [job-ocn.config]()
+- [server.config](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/server.config)
+- [job-atm.config](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/job-atm.config)
+- [job-ocn.config](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/job-ocn.config)
 
 ### Prepare the submit scripts
 
@@ -266,6 +266,8 @@ in this case). The server prints some logging information whenever the applicati
 Note that the server is only used by the gateway processes of the jobs to exchange contact information, and by the 
 application processes when new communicators are created. Otherwise the server remains idle and should not consume 
 any CPU time.
+
+
 
 
 
