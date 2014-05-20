@@ -263,7 +263,7 @@ These are the gateway processes for each of the jobs signing up at the server. O
 the server will create an global communicator (MPI_COMM_WORLD) containing all _application_ processes (1728
 in this case). The server prints some logging information whenever the application creates a new communicator.
 
-Note that the server is only used by the gateway of the jobs to exchange contact information, and by the 
+Note that the server is only used by the gateway processes of the jobs to exchange contact information, and by the 
 application processes when communicators created. Otherwise the server remains idle and should not consume 
 any CPU time.
 
