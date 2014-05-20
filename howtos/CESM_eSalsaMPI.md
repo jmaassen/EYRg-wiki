@@ -80,11 +80,56 @@ your machine. In this file, set the correct machine name:
 
 __NOTE: This is a dummy mkbatch file!__ Since we will use the eSalsa-MPI version of CESM to run on a 
 combination of machines, it is a bit hard to generate the correct submission files. Therefore, for the time 
-being we assume that the user will create these files manually. 
+being we assume that the user will create these files manually using the generated script as a starting point.
 	
 Here is the 
 [mkbatch.cartesius_gcc_eyrg](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/mkbatch.cartesius_gcc_eyrg)
 file we use on Cartesius.
+
+### Add the machine description.
+
+Add a `abc_eyrg` machine description to the `config_machines.xml`. Here's an example:
+
+     <machine MACH="cartesius_gcc_eygr"
+              DESC="SurfSara Bull, os is GNU/Linux, 24 pes/node, batch system is SLURM - EYRG setup" 
+              EXEROOT="/home/$CCSMUSER/experiments/$CASE/build"
+              OBJROOT="$EXEROOT"
+              LIBROOT="$EXEROOT/lib"
+              INCROOT="$EXEROOT/lib/include" 
+              DIN_LOC_ROOT_CSMDATA="/projects/esalsa/inputdata"
+              DIN_LOC_ROOT_CLMQIAN="/cgd/tss/atm_forcing.datm7.Qian.T62.c080727"   
+              DOUT_S_ROOT="/home/$CCSMUSER/archive/$CASE"
+              DOUT_L_HTAR="FALSE"
+              DOUT_L_MSROOT="csm/$CASE"
+              CCSM_BASELINE="/fis/cgd/cseg/csm/ccsm_baselines"
+              CCSM_CPRNC="/fis/cgd/cseg/csm/tools/cprnc/cprnc"
+              ESMF_LIBDIR="/ptmp/svasquez/esmf_install/ESMF_5_2_0-O/lib/"
+              OS="Linux" 
+              BATCHQUERY="squeue"
+              BATCHSUBMIT="sbatch &lt;" 
+              GMAKE_J="24" 
+              MAX_TASKS_PER_NODE="24"
+              MPISERIAL_SUPPORT="FALSE"
+              PES_PER_NODE="24" />
+
+In this machine description, the experiment dirs will be created in `$HOME/experiments` 
+(see EXEROOT), the output archive is located in `$HOME/archive` (see DOUT_S_ROOT), and the input
+is located in `/projects/esalsa/inputdata` (see DIN_LOC_ROOT_CSMDATA). 
+
+The EXEROOT directory will be used to create temporary output files such as logs and checkpoint. 
+This may be a lot of data! Once a CESM run has completed succesfully, al these logs and data will
+be copied to the output archive specified in DOUT_S_ROOT.
+
+The variables DIN_LOC_ROOT_CLMQIAN, CCSM_BASELINE, CCSM_CPRNC and ESMF_LIBDIR are NOT set correctly,
+but it seems that these are not used in our experiments.
+
+Here is the 
+[config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml) we use 
+in our experiments. This file already contains the machine description for "cartesius_gcc_eyrg".
+
+ 
+
+
 
 
 
