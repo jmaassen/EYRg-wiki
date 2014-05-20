@@ -1,4 +1,4 @@
-HOWTO: compiling CESM 1.04 with eSalsa-MPI
+HOWTO: compiling and running CESM 1.04 with eSalsa-MPI
 ==========================================
 
 We will now give a brief description on how to compile CESM with eSalsa-MPI. 
