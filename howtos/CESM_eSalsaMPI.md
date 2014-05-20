@@ -189,74 +189,33 @@ The `configure -case` generates the necessary scripts and configuration files fo
 particular experiment with this particular configuration. In general any changes to one of 
 the configuration files will require CESM to be recompiled.
 
-# Prepare the eSalsa-MPI configuration
+### Make sure that there are no "stray" MPI calls. 
 
-Once the experiment has compiled succesfully we need to create the necessary eSalsa-MPI configuration files 
-to run it. We assume the 1728 core configuration descibed above is used, and that CESM will be split in two jobs:
+Once CESM compiles correctly, all MPI calls in CESM -should- be intercepted by eSalsa MPI. 
+However, if the machine configuration is not 100% correct, it is possible that some components 
+of CESM still use 'real' MPI directly. To check this do the following:
 
-- 504 cores running the atmosphere, land, sea ice and coupler
-- 1224 cores running the ocean. 
+     nm -s build/run/ccsm.exe | grep "U " | grep MPI | grep -v PMPI
+     nm -s build/run/ccsm.exe | grep "U " | grep mpi
 
-In addition, we will use 2 gateway nodes of 24 cores each.
+Both commands should return without printing anything. If they do, there are no unsatisfied links in 
+ccsm.exe that directly point to an MPI call. If however you get output like this:
 
-### Prepare the eSalsa-MPI server config
+     U MPI_Barrier
+     U mpi_bcast_
 
-We will now prepare an eSalsa server config as descibed [here](). In this config we descibe the setup 
-of the server and both CESM jobs:
+there are MPI calls in the executable that are -NOT- interecepted, and your executable will -NOT- 
+run correctly. To fix this, go through the various build logs in build/run and check if there are 
+any direct calls to mpiicc of mpiifort in the logs. 
 
-     # Name of this experiment
-     EYRg experiment 1
+### Repeat for all machines
 
-     # Port at which the server should listnen. 
-     6677
+Once CESM build succesfully, you will need to repeat the process on the second machine you wish to use. 
+__IMPORTANT:__ use the same `env_mach_pes.xml`, `env_conv.xml` and `env_run.xml` files on all machines, 
+otherwise CESM will refuse to RUN. 
 
-     # Number of cluster used in this experiment
-     2
-
-     # Number of gateways used per cluster
-     24
-
-     # Number of streams used to connect gateways 
-     1
-
-     ##########################################
-     # Next, we configure each of the CESM jobs.
-
-     # ATM partition
-     job-ATM
-     504
-     12000
-     10.200.0.0/16
-
-     # OCN partition
-     job-OCN
-     1224
-     14000
-     10.200.0.0/16
-
-The server is configured to listnen on port 6677. The machine that the server is running on should be 
-accessible to the gateway nodes of both jobs. The jobs are called "job-ATM" and "job-OCN" and are configured 
-to use 24 gateways (1 node) per job. For "job-ATM" the gateways will use the network interface with address 
-`10.200.0.0/16` and port range `12000...12023`. For "job-OCN" the gateways will use the network interface 
-with address `10.200.0.0/16` and port range `14000...14023`.
-
-Next, two configuration files are needed to configure each CESM job: 
-
-The configuration for "job-ATM":
-
-     job-ATM 10.200.200.15 6677
-
-The configuration for "job-OCN":
-
-     job-OCN 10.200.200.15 6677
-
-Both configuratio files contain only a single line consisting of the name of the job and the location and 
-port of the server.
-
-### Prepare the submit scripts
-
-Next, we need to create a submit script 
-
+Next, you must prepare the necessary eSalsa-MPI configuration files and submit scripts. We will descibe this 
+in more detail [here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_configs.md).
 
 
  
