@@ -66,11 +66,6 @@ This config file contains descriptions for both the Stampede and Cartesius machi
 
 
 
-- [check_input_data](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/check_input_data)
-
-
-
-
 
 
 
