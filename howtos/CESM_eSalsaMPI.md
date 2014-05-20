@@ -113,8 +113,8 @@ Add a `abc_eyrg` machine description to the
               MPISERIAL_SUPPORT="FALSE"
               PES_PER_NODE="24" />
 
-In this machine description, the experiment dirs will be created in `$HOME/experiments` 
-(see EXEROOT), the output archive is located in `$HOME/archive` (see DOUT_S_ROOT), and the input
+In this machine description, the experiment dirs will be created in `$HOME/CESM/experiments` 
+(see EXEROOT), the output archive is located in `$HOME/CESM/archive` (see DOUT_S_ROOT), and the input
 is located in `/projects/esalsa/inputdata` (see DIN_LOC_ROOT_CSMDATA). 
 
 The EXEROOT directory will be used to create temporary output files such as logs and checkpoint. 
