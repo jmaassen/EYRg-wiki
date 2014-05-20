@@ -135,11 +135,9 @@ is almost identical to a "normal" CESM run (as described
 [here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)), only the name of the test and 
 machine configuration are different.
 
-	
-
 ### Create the appropriate experiment directories
 
-Make sure the experiment directories that CESM needs exist:
+Make sure all experiment directories that CESM needs exist:
 
      mkdir -p $HOME/CESM/experiments
      mkdir -p $HOME/CESM/archive
@@ -155,11 +153,11 @@ This creates a "test_eyrg" directory in `$HOME/CESM/experiments` that contains a
 for a simulation using compset "B" (all active models) for resolution "f05_t12" (0.5 degree atmosphere
 and land and 0.1 degree ocean and sea ice) using the configuration for "cartesius_gcc_eyrg".
 
-This configuration is only __PARTLY__ configured for running on Cartesius.
+This configuration is only __PARTLY__ configured.
 
 To complete the configuration of the experiment do the following:
    
-     cd $HOME/CESM/experiments/test1
+     cd $HOME/CESM/experiments/test_eyrg
 
 - Edit the "env_mach_pes.xml" to set the core configuration for this experiment. 
 - Edit the "env_conv.xml" file to set the correct run type and start date.  
@@ -179,18 +177,20 @@ This configuration used the following setup:
 - 4 coupling per model day between ocean and others. 
 - The simulation runs for 31 model days. 
 
-
 ### Build the experiment
 
 Next, build the experiment like this:
 
-     cd $HOME/CESM/experiments/test1
+     cd $HOME/CESM/experiments/test_eyrg
      ./configure -case
-     ./test1.cartesius_gcc.build 
+     ./test_eyrg.cartesius_gcc_eygr.build 
 
 The `configure -case` generates the necessary scripts and configuration files for this 
 particular experiment with this particular configuration. In general any changes to one of 
 the configuration files will require CESM to be recompiled.
+
+Once the experiment has compile succesfully we can create the necessary eSalsa-MPI configuration files 
+to run it. See [HOWTO: Running CESM with eSalsa-MPI](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI_run.md)
 
 
 
