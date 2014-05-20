@@ -128,7 +128,7 @@ Here is the
 [config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml) we use 
 in our experiments. This file already contains the machine description for "cartesius_gcc_eyrg".
 
-
+# Create an experiment
 
 __Next, we will create and compile an experiment using CESM with eSalsa-MPI.__ Note that the experiment setup 
 is almost identical to a "normal" CESM run (as described 
