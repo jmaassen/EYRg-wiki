@@ -1,16 +1,17 @@
-Howto install CESM 1.04
-=======================
+HOWTO: installing CESM 1.04
+============================
 
 In our EYRg experiments we will use CESM version 1.04. Although this is not the latest version, we also use 
 it in other projects, and therefore we have configuration files and results available. 
 
-We will now give a very short description of how to install CESM on Cartesius or Stampede. For a more detailed 
+We will now give a _very short_ description of how to install CESM on Cartesius or Stampede. For a more detailed 
 description on installing CESM have a look at the official documentation:
 
 <http://www.cesm.ucar.edu/models/cesm1.0/cesm>
 
-Note that this page describes how to perform a standard installation, __without__ support for wide area communication
-You will need to do this __before__ adding support for wide area communication (which can be found [here](http://)).
+Note that this page describes how to perform a __standard__ installation, __without__ support for wide area 
+communication You will need to do this __before__ adding support for wide area communication (which can be 
+found [here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM_eSalsaMPI.md)).
 
 ### Retrieve CESM from SVN:
 
@@ -25,7 +26,9 @@ To get access to SVN you will need a username and password for which you need to
 ### Create the appropriate machine configuration for CESM.
 
 Assuming the CESM is installed in `$HOME/cesm1_0_4` you need to create a machine
-description in the directory `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines`.
+description in the directory:
+
+     $HOME/cesm1_0_4/scripts/ccsm_utils/Machines
 
 In this directory you will find a collection of files looking something like this:
 
@@ -43,7 +46,17 @@ file so CESM can find your configuration.
 
 For Cartesisus and Stampede we have prepared the following files:
 
-TODO
+- [Macros.stampede]()
+- [env_machopts.stampede]()
+- [mkbatch.stampede]()
+- [Macros.cartesius_gcc]()
+- [env_machopts.cartesius_gcc]()
+- [mkbatch.cartesius_gcc]()
+- [config_machines.xml]()
+
+Note that the `config_machines.xml` contains descriptions for both the Stampede and Cartesius machines.
+
+
 
 
 

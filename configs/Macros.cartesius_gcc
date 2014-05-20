@@ -1,0 +1,273 @@
+#===============================================================================
+# SVN $Id: Macros.cppdefs 28555 2011-05-20 16:56:22Z fischer $
+# SVN $URL: https://svn-ccsm-models.cgd.ucar.edu/scripts/branch_tags/cesm1_0_4_rel_tags/cesm1_0_4_n13_scripts4_110531b/ccsm_utils/Machines/Macros.cppdefs $
+#===============================================================================
+# set CPP options (must use this before any flags or cflags settings)
+# Scripts build: this file is prepended to the $CASEROOT/Macros.machine file 
+# by create_newcase
+# Cam build: this file is prepended to the $cam_bld/Macros file 
+# by cam's configure
+#===============================================================================
+
+CPPDEFS := $(USER_CPPDEFS)
+CPPDEFS += -D__G95__
+
+# USE_ESMF_LIB is currently only defined in env_build.xml
+ifeq ($(USE_ESMF_LIB), TRUE)
+   CPPDEFS += -DUSE_ESMF_LIB
+endif
+
+# ESMF_INTERFACE is currently only defined in env_build.xml
+ifeq ($(COMP_INTERFACE), ESMF)
+   CPPDEFS += -DESMF_INTERFACE
+else
+   CPPDEFS += -DMCT_INTERFACE
+endif
+
+# USE_MPISERIAL is currently only defined in env_conf.xml
+ifeq ($(USE_MPISERIAL),TRUE)
+  # default
+  CPPDEFS += -DNO_MPI2
+else
+  CPPDEFS += -DHAVE_MPI
+endif
+
+# CCSM_BGC is currently only defined in env_conf.xml
+ifneq ($(CCSM_BGC),)
+  ifneq ($(CCSM_BGC),none)
+    CPPDEFS += -D$(CCSM_BGC)
+  endif
+endif
+
+# CCSM_VOC is currently only defined in env_conf.xml
+ifeq ($(CCSM_VOC), TRUE)
+   CPPDEFS += -DVOC
+endif
+
+# GLC_NEC is defined in env_conf.xml
+ifneq ($(GLC_NEC),0)
+   CPPDEFS += -DGLC_NEC_$(GLC_NEC)
+endif
+
+# Set config args for pio and mct to blank and then enable serial 
+# if USE_MPISERIAL (in env_conf) is set
+CONFIG_ARGS :=
+ifeq ($(USE_MPISERIAL),TRUE)
+   CONFIG_ARGS= --enable-mpiserial
+endif
+ifeq ($(MODEL),pio)
+  ifeq ($DEBUG,TRUE)
+     CONFIG_ARGS+= --enable-debug
+  endif
+endif
+
+#===============================================================================
+# SVN $Id: Macros.cppdefs 28555 2011-05-20 16:56:22Z fischer $
+# SVN $URL: https://svn-ccsm-models.cgd.ucar.edu/scripts/branch_tags/cesm1_0_4_rel_tags/cesm1_0_4_n13_scripts4_110531b/ccsm_utils/Machines/Macros.cppdefs $
+#===============================================================================
+# set CPP options (must use this before any flags or cflags settings)
+# Scripts build: this file is prepended to the $CASEROOT/Macros.machine file 
+# by create_newcase
+# Cam build: this file is prepended to the $cam_bld/Macros file 
+# by cam's configure
+#===============================================================================
+
+CPPDEFS := $(USER_CPPDEFS)
+
+# USE_ESMF_LIB is currently only defined in env_build.xml
+ifeq ($(USE_ESMF_LIB), TRUE)
+   CPPDEFS += -DUSE_ESMF_LIB
+endif
+
+# ESMF_INTERFACE is currently only defined in env_build.xml
+ifeq ($(COMP_INTERFACE), ESMF)
+   CPPDEFS += -DESMF_INTERFACE
+else
+   CPPDEFS += -DMCT_INTERFACE
+endif
+
+# USE_MPISERIAL is currently only defined in env_conf.xml
+ifeq ($(USE_MPISERIAL),TRUE)
+  # default
+  CPPDEFS += -DNO_MPI2
+else
+  CPPDEFS += -DHAVE_MPI
+endif
+
+# CCSM_BGC is currently only defined in env_conf.xml
+ifneq ($(CCSM_BGC),)
+  ifneq ($(CCSM_BGC),none)
+    CPPDEFS += -D$(CCSM_BGC)
+  endif
+endif
+
+# CCSM_VOC is currently only defined in env_conf.xml
+ifeq ($(CCSM_VOC), TRUE)
+   CPPDEFS += -DVOC
+endif
+
+# GLC_NEC is defined in env_conf.xml
+ifneq ($(GLC_NEC),0)
+   CPPDEFS += -DGLC_NEC_$(GLC_NEC)
+endif
+
+# Set config args for pio and mct to blank and then enable serial 
+# if USE_MPISERIAL (in env_conf) is set
+CONFIG_ARGS :=
+ifeq ($(USE_MPISERIAL),TRUE)
+   CONFIG_ARGS= --enable-mpiserial
+endif
+ifeq ($(MODEL),pio)
+  ifeq ($DEBUG,TRUE)
+     CONFIG_ARGS+= --enable-debug
+  endif
+endif
+
+#===============================================================================
+# The following always need to be set
+# SPMD             Whether to build in SPMD mode or not.  [values TRUE FALSE]
+# SMP              Set to TRUE to enable building in SMP mode (uses OpenMP).  
+# USER_CPPDEFS     CPP definitions (non platform dependent)
+#
+#===============================================================================
+# WARNING! THE LAHEY COMPILER WILL NOT CURRENTLY COMPILE POP, SO THIS IS VALID
+#          ONLY FOR COMPSETS WITHOUT POP!
+#===============================================================================
+
+# Note that CPPDEFS is set in Macros.cppdefs
+CPPDEFS += -DLINUX -DSEQ_$(FRAMEWORK) -DFORTRANUNDERSCORE -DNO_R16 -DNO_SHR_VMATH 
+
+ifeq ($(compile_threaded), true)
+   CPPDEFS += -DTHREADED_OMP
+endif
+
+ifeq ($(USE_MPISERIAL),TRUE)
+   FC            := gfortran
+   CC            := gcc
+else
+   FC            := gfortran
+   CC            := gcc
+endif
+
+#=====================================================
+# GENERIC_USER
+# The netcdf and mpi paths need to be set somewhere.  In CESM, this
+# is normally done by setting the NETCDF_PATH and MPICH_PATH
+# variables in this Macros file.  But they could also be set in the 
+# default user paths, by an explicit addition to the local path 
+# in the env_mach_specific file, or via setting NETCDF_PATH 
+# and MPICH_PATH environment variables in the env_mach_specific file.  
+# Also, review the relative paths of the INC_, LIB_, and MOD_ paths
+# below.  Ignore PNETCDF stuff initially, it's not required.
+
+#NETCDF_PATH = /hpc/sw/netcdf-4.1.3-intel-seq
+NETCDF_PATH = /home/jason/CESM/netcdf-bin
+INC_NETCDF    := $(NETCDF_PATH)/include
+LIB_NETCDF    := $(NETCDF_PATH)/lib
+MOD_NETCDF    := $(NETCDF_PATH)/include
+
+MPICH_PATH := /home/jason/eSalsa-MPI
+
+ifeq ($(USE_MPISERIAL),TRUE)
+   INC_MPI    := $(CODEROOT)/utils/mct/mpi-serial
+   LIB_MPI    := 
+else
+   INC_MPI    := $(MPICH_PATH)/include
+   LIB_MPI    := $(MPICH_PATH)/lib
+endif
+
+MPI_LIB_NAME  := mpi
+PNETCDF_PATH  :=
+INC_PNETCDF   :=
+LIB_PNETCDF   := 
+LAPACK_LIBDIR := 
+
+#=====================================================
+
+CFLAGS        := $(CPPDEFS) -D__G95__ -O3 
+FIXEDFLAGS    := -ffixed-line-length-132
+FREEFLAGS     := -ffree-line-length-none
+#FFLAGS        := $(CPPDEFS) -g -fp-model precise -convert big_endian -assume byterecl -ftz -traceback -DISNAN_INTRINSIC
+FFLAGS        := $(CPPDEFS) -D__G95__ -g -fno-range-check -ffree-line-length-none -fconvert=swap -fcray-pointer -ffpe-trap=invalid,zero,overflow -std=gnu
+FFLAGS_NOOPT  := $(FFLAGS) -O0 -g 
+FFLAGS_OPT    := -O3 
+LDFLAGS       := -L/opt/intel/impi/4.1.0.024/lib64 -lgfortran 
+AR            := ar
+MOD_SUFFIX    := mod
+CONFIG_SHELL  :=
+
+#===============================================================================
+# Set include paths (needed after override for any model specific builds below)
+#===============================================================================
+
+INCLDIR := -I . 
+ifneq ($(strip $(INC_NETCDF)),)
+INCLDIR += -I $(INC_NETCDF)
+endif
+ifneq ($(strip $(MOD_NETCDF)),)
+INCLDIR += -I $(MOD_NETCDF)
+endif
+ifneq ($(strip $(INC_MPI)),)
+INCLDIR += -I $(INC_MPI)
+endif 
+ifneq ($(strip $(INC_PNETCDF)),)
+INCLDIR += -I $(INC_PNETCDF)
+endif
+ifeq ($(MODEL),driver)
+   INCLDIR += -I $(EXEROOT)/atm/obj -I $(EXEROOT)/lnd/obj -I $(EXEROOT)/ice/obj -I $(EXEROOT)/ocn/obj -I $(EXEROOT)/glc/obj
+endif
+
+#===============================================================================
+# Set model and other specific options
+# NOTE - all CPPDEFS options must be defined before this point
+#===============================================================================
+
+ifeq ($(DEBUG),TRUE)
+  FFLAGS       += -CU -check pointers -fpe0 -ftz
+  FFLAGS_NOOPT += -CU -check pointers -fpe0 -ftz
+else
+  FFLAGS += $(FFLAGS_OPT)
+endif
+
+ifeq ($(compile_threaded), true)
+  FFLAGS       += -openmp
+  FFLAGS_NOOPT += -openmp
+  CFLAGS       += -openmp
+  LDFLAGS      += -openmp
+endif
+
+ifeq ($(strip $(MODEL)),cam)
+# These RRTMG files cause a compiler error when using optimization.
+# Until mods are made to read the data from files, just remove optimization from
+# their compilation.
+rrtmg_lw_k_g.o: rrtmg_lw_k_g.f90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+rrtmg_sw_k_g.o: rrtmg_sw_k_g.f90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+binary_io.o: binary_io.F90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+wrap_nf.o: wrap_nf.F90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+wrap_mpi.o: wrap_mpi.F90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+apex_subs.o: apex_subs.F90
+	$(FC) -c $(CPPDEFS) $(INCLDIR) $(INCS) $(FREEFLAGS) $(FFLAGS_NOOPT) $<
+endif
+
+#=====================================================
+# GENERIC_USER
+# Options passed to the mct and pio build are set here
+
+ifeq ($(MODEL),mct)
+        #add arguments for mct configure here
+  CONFIG_ARGS += CC="$(CC)" FC="$(FC)" F90="$(FC)" INCLUDEPATH="-I$(INC_MPI)" F90FLAGS="$(FFLAGS)" CFLAGS="$(CFLAGS)"
+endif
+
+ifeq ($(MODEL),pio)
+  ifneq ($(strip $(PIO_CONFIG_OPTS)),)
+    CONFIG_ARGS += $(PIO_CONFIG_OPTS)
+  endif
+  CONFIG_ARGS += CC="$(CC)" F90="$(FC)" FC="$(FC)" MPICC="$(CC)" MPIF90="$(FC)" NETCDF_PATH="$(NETCDF_PATH)" MPI_INC="-I$(INC_MPI)" FFLAGS="$(FFLAGS)" CFLAGS="$(CFLAGS)"
+endif
+
+#=====================================================
