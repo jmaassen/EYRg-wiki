@@ -138,6 +138,8 @@ the configuration files will require CESM to be recompiled.
 
 Note that when a configuration is build for the first time, CESM will download the necessary 
 input data file from SVN. As these files are quite large (tens of GBs) this may take some time. 
+The input files are stored in the location provided by `DIN_LOC_ROOT_CSMDATA` in 
+`config_machines.xml`.
 
 ### Start CESM 
 
