@@ -74,6 +74,12 @@ The configuration for "job-OCN":
 Both configuration files contain only a single line consisting of the name of the job and the location and
 port of the server.
 
+The configuration files are available here:
+
+- [server.config]()
+- [job-atm.config]()
+- [job-ocn.config]()
+
 ### Prepare the submit scripts
 
 Next, we need to create two submit scripts, one for each job. The exact syntax of these scripts depends on the 
@@ -163,7 +169,7 @@ using SLURM:
 
 Important thing to notice in this example are:
 
-  - This script requests 22 nodes of 24 cores each. Adapt this to the core count of the target machine.
+  - This script requests 22 nodes of 24 cores each. Adapt this to the node and core count of the target machine.
 
   - The script changes directories twice. Once to `cd /home/jason/CESM/experiments/test_eyrg` and then to 
     ` cd /home/jason/CESM/experiments/test_eyrg/build`. Adapt this to your own configuration. 
@@ -171,6 +177,101 @@ Important thing to notice in this example are:
   - This script sets an environment variable `EMPI_CONFIG` to the location of the eSalsa-MPI configuration 
     file for the "job-ATM" job: `/home/jason/CESM/experiments/test_eyrg/job-atm.config`. Make sure that you 
     set this variable, and that the config file exists. eSalsa-MPI needs this config file to find the server.
+
+
+The examples submit scripts are available here: 
+[submit-atm-528.slurm](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/submit-atm-528.slurm) 
+and 
+[submit-ocn-1248.slurm](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/submit-ocn-1248.slurm).
+
+### Start the server and submit the jobs. 
+
+Once all confguration files have been created, you can start a job by performing these three steps:
+
+- Start the server
+
+     $EMPI_HOME/scripts/empi-server.sh server.config
+
+It should then print something like this:
+
+     0 : Logging started
+     5 : Starting eSalsa MPI server for experiment "EYRg experiment 1"
+     5 :    Clusters                 : 2
+     5 :    Gateways/clusters        : 24
+     5 :    Application processes    : 1728
+     5 :    Total processes          : 1776
+     5 :    Parallel streams         : 1
+     5 :    Server listening on port : 6677
+     5 :    --------------------------
+     5 :    Cluster 0 name           : "job-ATM"
+     5 :       Application processes : 504
+     5 :       Port range in use     : 12000 ... 12024
+     5 :       Network to use        : 10.200.0.0/255.255.0.0
+     5 :    --------------------------
+     5 :    Cluster 1 name           : "job-OCN"
+     5 :       Application processes : 1224
+     5 :       Port range in use     : 14000 ... 14024
+     5 :       Network to use        : 10.200.0.0/255.255.0.0
+     6 : 
+     6 : Waiting for 2 clusters to connect...
+
+- Submit the jobs:
+
+     sbatch submit-atm-528.slurm
+
+and 
+
+     sbatch submit-ocn-1248.slurm
+
+
+Once the jobs are started by the resource manager, the server will produce output like this:
+
+     620779 : Got connection from Socket[addr=/10.200.202.125,port=43114,localport=6677]
+     620780 : Cluster job-ATM connected to gateway at Socket[addr=/10.200.202.125,port=43114,localport=6677]
+     620781 : Receiving gateway info for gateway job-ATM/0
+     620914 :   Available IP address: /10.2.202.125
+     620914 :   Available IP address: /10.200.202.125
+     620914 :   Available IP address: /10.201.202.125
+
+     ....
+
+     680563 : Got connection from Socket[addr=/10.200.203.9,port=46093,localport=6677]
+     680563 : Cluster job-OCN connected to gateway at Socket[addr=/10.200.203.9,port=46093,localport=6677]
+     680563 : Receiving gateway info for gateway job-OCN/0
+     681727 :   Available IP address: /10.2.203.9
+     681727 :   Available IP address: /10.200.203.9
+     681727 :   Available IP address: /10.201.203.9
+
+     ... 
+     
+     682565 : Signup complete -- all clusters are connected!
+     682565 : Creating communicator 0 with 1728 processes
+     682573 : Server waiting until application terminates.
+ 
+     ...
+
+     684913 : Creating new group from communicator 0
+     684925 : Created new communicator: COMM(3) = [ 0:0, 0:1, 0:2, .... ]
+   
+     ...
+
+     etc.
+
+
+These are the gateway processes for each of the jobs signing up at the server. Once all gateways are running, 
+the server will create an global communicator (MPI_COMM_WORLD) containing all _application_ processes (1728
+in this case). The server prints some logging information whenever the application creates a new communicator.
+
+Note that the server is only used by the gateway of the jobs to exchange contact information, and by the 
+application processes when communicators created. Otherwise the server remains idle and should not consume 
+any CPU time.
+
+
+
+
+
+
+
 
 
 
