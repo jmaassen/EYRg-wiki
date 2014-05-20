@@ -105,7 +105,7 @@ is capable of utilizing both the fast local interconnects of the supercomputers,
 connection between the machines. 
 
 Since we were not able to find an existing MPI implementation that suited our needs (there are lot of 
-technical details that need to be taken into account here), we decided to grow our own; 
+technical details that need to be taken into account here), we decided to grow our own:
 [eSalsa-MPI](https://github.com/NLeSC/eSalsa-MPI/tree/develop).
 
 eSalsa-MPI consists of three components, an MPI wrapper, gateways and a server, as shown in the example 
