@@ -48,19 +48,28 @@ For Cartesisus and Stampede we have prepared the following files:
 
 Stampede:
 
-- [Macros.stampede]()
-- [env_machopts.stampede]()
-- [mkbatch.stampede]()
+- [Macros.stampede](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/Macros.stampede)
+- [env_machopts.stampede](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/env_machopts.stampede)
+- [mkbatch.stampede](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/mkbatch.stampede)
 
 Cartesius: 
 
-- [Macros.cartesius_gcc]()
-- [env_machopts.cartesius_gcc]()
-- [mkbatch.cartesius_gcc]()
+- [Macros.cartesius_gcc](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/Macros.cartesius_gcc)
+- [env_machopts.cartesius_gcc](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/env_machopts.cartesius_gcc)
+- [mkbatch.cartesius_gcc](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/mkbatch.cartesius_gcc)
 
 This config file contains descriptions for both the Stampede and Cartesius machines.
 
-- [config_machines.xml]()
+- [config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml)
+
+
+
+
+
+- [check_input_data](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/check_input_data)
+
+
+
 
 
 
