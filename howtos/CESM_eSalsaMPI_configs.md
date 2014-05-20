@@ -19,7 +19,7 @@ will be split in two jobs:
 
 In addition, we will use 2 gateway nodes of 24 cores each. This give us the configuration shown below:
 
-![cesm-split](images/CESM-empi-24gw.png "CESM example split")
+![cesm-split](https://github.com/jmaassen/EYRg-wiki/blob/master/images/CESM-empi-24gw.png "CESM example split")
 
 ### Prepare the eSalsa-MPI server config
 
