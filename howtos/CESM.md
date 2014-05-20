@@ -46,15 +46,21 @@ file so CESM can find your configuration.
 
 For Cartesisus and Stampede we have prepared the following files:
 
+Stampede:
+
 - [Macros.stampede]()
 - [env_machopts.stampede]()
 - [mkbatch.stampede]()
+
+Cartesius: 
+
 - [Macros.cartesius_gcc]()
 - [env_machopts.cartesius_gcc]()
 - [mkbatch.cartesius_gcc]()
-- [config_machines.xml]()
 
-Note that the `config_machines.xml` contains descriptions for both the Stampede and Cartesius machines.
+This config file contains descriptions for both the Stampede and Cartesius machines.
+
+- [config_machines.xml]()
 
 
 
