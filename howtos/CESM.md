@@ -106,14 +106,14 @@ To complete the configuration of the experiment do the following:
      cd $HOME/CESM/experiments/test1
 
 - Edit the "env_mach_pes.xml" to set the core configuration for this experiment. 
-- Edit the "env_conv.xml" file to set the correct run type and start date. or use 
+- Edit the "env_conv.xml" file to set the correct run type and start date.  
 - Edit the "env_run.xml" file to set the desired experiment length.
 
 We have also prepared these test configurations for Cartesius:
 
-- [env_mach_pes.xml]()
-- [env_conv.xml]()
-- [env_run.xml]()
+- [env_mach_pes.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_mach_pes.xml)
+- [env_conv.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_conf.xml)
+- [env_run.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_run.xml)
 
 These configurations are setup as follows:
 
@@ -136,6 +136,8 @@ The `configure -case` generates the necessary scripts and configuration files fo
 particular experiment with this particular configuration. In general any changes to one of 
 the configuration files will require CESM to be recompiled.
 
+Note that when a configuration is build for the first time, CESM will download the necessary 
+input data file from SVN. As these files are quite large (tens of GBs) this may take some time. 
 
 ### Start CESM 
 
