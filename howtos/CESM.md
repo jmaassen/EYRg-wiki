@@ -115,7 +115,7 @@ We have also prepared these test configurations for Cartesius:
 - [env_conv.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_conf.xml)
 - [env_run.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_run.xml)
 
-These configurations are setup as follows:
+This configuration used the following setup:
 
 - CESM is run on 1728 cores (72 nodes x 24 cores) of Cartesius
 - Atmosphere runs on 504 cores (21 nodes) shared with coupler (504), land (24) and sea ice (480).
