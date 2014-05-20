@@ -18,7 +18,7 @@ you need to create a machine description in the directory:
 
 ### Create a Macros file
 
-First create a `Macros.abc_eyrg` file based on the `Macros.abc` file, where `abc` is the 
+First create a `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines/Macros.abc_eyrg` file based on the `Macros.abc` file, where `abc` is the 
 name of your machine.
 
 In this file, set the MPI library to eSalsa-MPI:
@@ -62,7 +62,7 @@ file we use on Cartesius.
 
 ### Create a machine specific "env_machopts" file.
 
-Create a `env_machopts.abc_eyrg` file based on the `env_machopts.abc` file, where `abc` is the name of 
+Create a `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines/env_machopts.abc_eyrg` file based on the `env_machopts.abc` file, where `abc` is the name of 
 your machine. In this file, set the MPI location to eSalsa-MPI:
 
      setenv MPICH_PATH $HOME/eSalsa-MPI
@@ -73,7 +73,7 @@ file we use on Cartesius.
 
 ### Create a __DUMMY__ "mkbatch" file.
 
-Create a `mkbatch.abc_eSalsaMPI` file based on the `mkbatch.abc` file, where `abc` is the name of 
+Create a `$HOME/cesm1_0_4/scripts/ccsm_utils/Machines/mkbatch.abc_eSalsaMPI` file based on the `mkbatch.abc` file, where `abc` is the name of 
 your machine. In this file, set the correct machine name:
 
      set mach = abc_eyrg
@@ -88,7 +88,8 @@ file we use on Cartesius.
 
 ### Add the machine description.
 
-Add a `abc_eyrg` machine description to the `config_machines.xml`. Here's an example:
+Add a `abc_eyrg` machine description to the 
+`$HOME/cesm1_0_4/scripts/ccsm_utils/Machines/config_machines.xml`. Here's an example:
 
      <machine MACH="cartesius_gcc_eygr"
               DESC="SurfSara Bull, os is GNU/Linux, 24 pes/node, batch system is SLURM - EYRG setup" 
