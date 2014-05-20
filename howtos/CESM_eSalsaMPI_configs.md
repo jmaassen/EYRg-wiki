@@ -264,7 +264,7 @@ the server will create an global communicator (MPI_COMM_WORLD) containing all _a
 in this case). The server prints some logging information whenever the application creates a new communicator.
 
 Note that the server is only used by the gateway processes of the jobs to exchange contact information, and by the 
-application processes when communicators created. Otherwise the server remains idle and should not consume 
+application processes when new communicators are created. Otherwise the server remains idle and should not consume 
 any CPU time.
 
 
