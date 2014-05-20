@@ -161,6 +161,17 @@ using SLURM:
      cd $CASEROOT
      ./Tools/ccsm_postrun.csh || exit 1
 
+Important thing to notice in this example are:
+
+  - This script requests 22 nodes of 24 cores each. Adapt this to the core count of the target machine.
+
+  - The script changes directories twice. Once to `cd /home/jason/CESM/experiments/test_eyrg` and then to 
+    ` cd /home/jason/CESM/experiments/test_eyrg/build`. Adapt this to your own configuration. 
+
+  - This script sets an environment variable `EMPI_CONFIG` to the location of the eSalsa-MPI configuration 
+    file for the "job-ATM" job: `/home/jason/CESM/experiments/test_eyrg/job-atm.config`. Make sure that you 
+    set this variable, and that the config file exists. eSalsa-MPI needs this config file to find the server.
+
 
 
  
