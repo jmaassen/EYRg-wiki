@@ -63,7 +63,7 @@ atmosphere and ice. Land only requires a small amount of processing due to its l
 The coupling frequency is the number of times data is exchanged between models per simulated day. For typical 
 configurations, data is exchanged between land, ice and atmosphere models every 30 simulated minutes, 
 resulting in 48 couplings per simulated day. The ocean model only needs to exchange data with the other 
-models one to four times every simulated day.
+models a few time times every simulated day (typically one to four times).
 
 Due to data dependencies between the atmosphere model and the land and ice models, these models cannot be run 
 concurrently. The resulting workflow for CESM is shown below. This workflow illustrates a single simulated 
@@ -78,7 +78,7 @@ processing time for the ocean model, although more pessimistic estimates go up t
 more.
 
 When running climate simulations at such extreme resolutions, traditional supercomputers often do not have 
-enough processing power available for the necessary computations. Fortunately, in CESM, the amount of 
+enough processing power _available_ for the necessary computations. Fortunately, in CESM, the amount of 
 communication between submodels is limited (at least compared to the amount of communication within each
 submodel). This allows us to distibuted the models over multiple locations. Taking coupling frequencies 
 and data dependencies into account, we can easily distribute the models as follows:
@@ -92,14 +92,61 @@ the amount of data that needs to be exchanged between models during a _single_ m
 0.5/0.1 degree resolutions. The red numbers are an estimate for the amount of data exchanged when using 
 the 0.5/0.02 degree resolution.
 
+The lightpaths provided by the NRENs that organized EYRg typically offer a bandwith of 10Gbit/s or more. 
+We think that this should be sufficient for our initial experiments. 
+
 
 How are we planning to do it? 
 -----------------------------
 
+Our aim is to run our distributed computing experiments with out changing a single line of the CESM 
+code. Since CESM is a Fortran/MPI application, the obvious choice is therefore to use an MPI that 
+is capable of utilizing both the fast local interconnects of the supercomputers, and the lightpath 
+connection between the machines. 
+
+Since we were not able to find an existing MPI implementation that suited our needs (there are lot of 
+technical details that need to be taken into account here), we decided to grow our own; 
+[eSalsa-MPI](https://github.com/NLeSC/eSalsa-MPI/tree/develop).
+
+eSalsa-MPI consists of three components, an MPI wrapper, gateways and a server, as shown in the example 
+below:
+
+![esalsa-mpi](images/esalsa-mpi.png "eSalsa-MPI")
+
+The _wrapper_ implements (part of) the regular MPI interface. This allows applications to be compiled 
+against, and linked with, eSalsa-MPI instead of a "normal" MPI implementation. This way, all MPI calls 
+performed by the application are intercepted by eSalsa-MPI.
+
+The _server_ acts as a central contact point that allows the eSalsa-MPI jobs running on different 
+supercomputers to locate each other. In addition, the server provides support for operations on communicators 
+and groups. For example, it is up to the server to create an MPI_COMM_WORLD communicator that contains all 
+tasks on all particiating machines.
+
+It is the tasks of the _gateways_ to forward (local) MPI messages over the wide area links and vice versa. To 
+do so, a gateway is connected to a peer gateway in a remote site via one or more TCP streams. Each site may 
+use multiple gateways.
+
+eSalsa-MPI is __not__ a complete MPI implementation. Instead, most MPI calls are simple forwarded to 
+the local MPI implementation, using the MPI profiling interface. Only MPI calls that require wide area 
+communication are handled differently. 
+
+For each MPI call intercepted by eSalsa-MPI a decision is made if the call can be handled locally (for 
+example, an MPI_Send to a different process in the same cluster) or if it must be forwarded to a local 
+gateway that will forward it to a remote site (for example an MPI_Send between clusters or a collective 
+operation that involves all processes).
+
+By using eSalsa-MPI, traditional MPI applications to be run on a -combination- of multiple supercomputers or 
+clusters, without changing a single line of code in the application. eSalsa-MPI "merges" multiple distict MPI 
+jobs running on different supercomputers and present it to the application a a single set of MPI tasks. This 
+way, the application "thinks" it is running on a single supercomputer, while in reality it it running on two 
+or more.
+
+More information about eSalsa-MPI can be found here:
+
+<https://github.com/NLeSC/eSalsa-MPI/tree/develop>
 
 
-
-Additional information, HOWTOs, example, ...
+More information, HOWTOs, examples, ...
 -------------------------------------------
 
 [Our EYRg proposal](https://github.com/jmaassen/EYRg-wiki/blob/master/documents/EYRG_Dijkstra_Final.pdf?raw=true)
