@@ -117,11 +117,11 @@ We have also prepared these test configurations for Cartesius:
 
 These configurations are setup as follows:
 
-- CESM is run on 1728 cores (72 nodes) of Cartesius
-- Atmosphere shares 504 cores (21 nodes) with land (24 cores / 1 node), sea ice (480 cores / 20 nodes), and coupler, 504 cores (21 nodes).
+- CESM is run on 1728 cores (72 nodes x 24 cores) of Cartesius
+- Atmosphere shares 504 cores (21 nodes) with the coupler, land (24 cores / 1 node) and sea ice (480 cores / 20 nodes).
 - Ocean runs concurrently on an additional 1225 cores (51 nodes)
 - 4 coupling per model day between ocean and others. 
-- Run for 31 model days. 
+- The simulation runs for 31 model days. 
 
 
 ### Build the experiment
