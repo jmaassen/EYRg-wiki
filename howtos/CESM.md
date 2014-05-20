@@ -52,7 +52,7 @@ Stampede:
 - [env_machopts.stampede](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/env_machopts.stampede)
 - [mkbatch.stampede](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/mkbatch.stampede)
 
-Cartesius: 
+Cartesius (using GCC 4.8.0): 
 
 - [Macros.cartesius_gcc](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/Macros.cartesius_gcc)
 - [env_machopts.cartesius_gcc](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/env_machopts.cartesius_gcc)
