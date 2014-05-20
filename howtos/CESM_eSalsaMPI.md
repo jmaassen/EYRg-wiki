@@ -211,6 +211,7 @@ any direct calls to mpiicc of mpiifort in the logs.
 ### Repeat for all machines
 
 Once CESM build succesfully, you will need to repeat the process on the second machine you wish to use. 
+
 __IMPORTANT:__ use the same `env_mach_pes.xml`, `env_conv.xml` and `env_run.xml` files on all machines, 
 otherwise CESM will refuse to RUN. 
 
