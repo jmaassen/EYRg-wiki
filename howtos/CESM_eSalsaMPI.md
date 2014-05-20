@@ -128,7 +128,70 @@ Here is the
 [config_machines.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/config_machines.xml) we use 
 in our experiments. This file already contains the machine description for "cartesius_gcc_eyrg".
 
- 
+
+
+__Next, we will create and compile an experiment using CESM with eSalsa-MPI.__ Note that the experiment setup 
+is almost identical to a "normal" CESM run (as described 
+[here](https://github.com/jmaassen/EYRg-wiki/blob/master/howtos/CESM.md)), only the name of the test and 
+machine configuration are different.
+
+	
+
+### Create the appropriate experiment directories
+
+Make sure the experiment directories that CESM needs exist:
+
+     mkdir -p $HOME/CESM/experiments
+     mkdir -p $HOME/CESM/archive
+
+### Create an experiment
+
+To setup a CESM experiment you must use the "create_newcase" script:
+
+     cd $HOME/CESM/experiments
+     $HOME/cesm1_0_4/scripts/create_newcase -case test_eyrg -mach cartesius_gcc_eyrg -compset B -res f05_t12
+
+This creates a "test_eyrg" directory in `$HOME/CESM/experiments` that contains a CESM instance configuration 
+for a simulation using compset "B" (all active models) for resolution "f05_t12" (0.5 degree atmosphere
+and land and 0.1 degree ocean and sea ice) using the configuration for "cartesius_gcc_eyrg".
+
+This configuration is only __PARTLY__ configured for running on Cartesius.
+
+To complete the configuration of the experiment do the following:
+   
+     cd $HOME/CESM/experiments/test1
+
+- Edit the "env_mach_pes.xml" to set the core configuration for this experiment. 
+- Edit the "env_conv.xml" file to set the correct run type and start date.  
+- Edit the "env_run.xml" file to set the desired experiment length.
+
+We have also prepared these test configurations for Cartesius:
+
+- [env_mach_pes.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_mach_pes.xml)
+- [env_conv.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_conf.xml)
+- [env_run.xml](https://github.com/jmaassen/EYRg-wiki/blob/master/configs/cartesius-1m/env_run.xml)
+
+This configuration used the following setup:
+
+- CESM is run on 1728 cores (72 nodes x 24 cores).
+- Atmosphere runs on 504 cores (21 nodes) shared with coupler (504), land (24) and sea ice (480).
+- Ocean runs concurrently on an additional 1225 cores (51 nodes)
+- 4 coupling per model day between ocean and others. 
+- The simulation runs for 31 model days. 
+
+
+### Build the experiment
+
+Next, build the experiment like this:
+
+     cd $HOME/CESM/experiments/test1
+     ./configure -case
+     ./test1.cartesius_gcc.build 
+
+The `configure -case` generates the necessary scripts and configuration files for this 
+particular experiment with this particular configuration. In general any changes to one of 
+the configuration files will require CESM to be recompiled.
+
 
 
 
